@@ -1,0 +1,219 @@
+/* -----------Стили для страницы------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(211, 235, 255);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* ====================================== */
+
+/* ---------Стили для карточек----------- */
+
+.game {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+img {
+    max-width: 150px;
+    max-height: 148px;
+    /* margin: 3px; */
+}
+
+.cards {
+    width: 150px;
+    margin: .1%;
+    height: 150px;
+    border: 1px solid #000;
+    position: relative;
+    cursor: pointer;
+    perspective: 400px;
+    /*-для эффекта поворота карточек-*/
+}
+
+.cardsFront,
+.cardsBack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    backface-visibility: hidden;
+}
+
+/* -----создаем рубашку для карточек-------- */
+.cardsBack {
+    background: repeating-linear-gradient(-45deg,
+            /* transparent,
+            transparent 2px, */
+            rgb(236, 240, 23) 60%,
+            rgb(102, 228, 102))
+}
+
+.cardsFront {
+    transform: rotateY(-180deg);
+}
+
+
+.cards.flip .cardsFront {
+    /*класс flip нужен для назначения класса в js*/
+    transform: rotateY(0);
+}
+
+.cards.flip .cardsBack {
+    transform: rotateY(180deg);
+}
+
+/* ========================================= */
+
+/* --------секция с кнопкой и счетом-------- */
+.total {
+    display: flex;
+    justify-content: space-around;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.timer,
+.score {
+    display: flex;
+    justify-content: space-around;
+    width: 140px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.timerZone,
+.scoreZone {
+    border: 1px solid black;
+    width: 60px;
+    height: 30px;
+}
+
+p {
+    font-size: 22px;
+}
+
+button {
+    background-color: rgb(63, 179, 40);
+    padding: 7px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+/* ====================================== */
+
+.gameOver {
+    /* =Прячем заставку "Вы проиграли"== в js мы ее открываем */
+    display: none;
+}
+
+
+.victory {
+    /* =Прячем заставку "Вы проиграли"== в js мы ее открываем */
+    display: none;
+}
+
+.allScreen,
+.victoryScreen {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 3;
+    background-color: #000;
+    opacity: 0.9;
+}
+
+
+.victoryImages {
+    position: relative;
+    top: 5%;
+    max-width: 70%;
+    max-height: 70%;
+    margin-top: 0;
+}
+
+.allScreen p {
+    position: absolute;
+    font-size: 86px;
+    color: #fff;
+    top: 40%;
+    left: 25%;
+    text-align: center;
+    font-size: 150px;
+    position: absolute;
+}
+
+
+.text {
+    position: absolute;
+    z-index: 10;
+    color: #fff;
+    top: 40%;
+    left: 30%;
+    font-size: 140px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 10px #000;
+
+}
+
+/* ------------------анимация для текста--------------------- */
+.text span {
+    display: inline-block;
+    animation: smoke 3s linear forwards;
+}
+
+@keyframes smoke {
+    100% {
+        opacity: 0;
+        transform: rotate(20deg) translateY(-400px) scale(0.5);
+        filter: blur(40px);
+    }
+}
+
+/* -------------------для каждого span делаем задержку, чтоб буквы исчезали поочереди */
+.text span:nth-child(7) {
+    animation-delay: 3.8s;
+}
+
+.text span:nth-child(6) {
+    animation-delay: 3.4s;
+}
+
+.text span:nth-child(5) {
+    animation-delay: 3s;
+}
+
+.text span:nth-child(4) {
+    animation-delay: 2.6s;
+}
+
+.text span:nth-child(3) {
+    animation-delay: 2.2s;
+}
+
+.text span:nth-child(2) {
+    animation-delay: 1.8s;
+}
+
+.text span:nth-child(1) {
+    animation-delay: 1.4s;
+}
